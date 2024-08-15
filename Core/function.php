@@ -34,7 +34,8 @@ function login($user):array
         'id' => $user['user_id'],
         'last_name' => $user['last_name'],
         'email' => $user['email'],
-        'user_type' => $user['user_type']
+        'user_type' => $user['user_type'],
+        'user_number' => $user['user_number'],
     ];
 
     session_regenerate_id(true);
@@ -71,7 +72,7 @@ function logout(): void
     session_destroy();
 
     $params = session_get_cookie_params();
-    setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+    setcookie('HTTPSESSION', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
 }
 
 function generateUserId($role, $db_table): string

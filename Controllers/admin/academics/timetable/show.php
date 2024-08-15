@@ -45,10 +45,14 @@ function getSubject($time_id, $day, $grade)
     ])->find();
 
     // dd($lesson);
+    if($lesson){
 
     return $db->query("SELECT * FROM subjects WHERE id= :subject_id", [
         'subject_id' => $lesson['subject']
     ])->find();
+    }else{
+        return NULL;
+    }
 }
 
 
@@ -67,12 +71,12 @@ view('partials/admin/head.php', [
     'title' => $title,
 ]);
 
-view('partials/admin/side-nav.php', [
+view('partials/user/side-nav.php', [
     'name' => $_SESSION['user']['last_name'],
     'user_type' => $_SESSION['user']['user_type']
 ]);
 
-view('partials/admin/nav.php', [
+view('partials/user/nav.php', [
     'name' => $_SESSION['user']['last_name']
 ]);
 

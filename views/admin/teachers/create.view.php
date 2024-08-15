@@ -2,10 +2,14 @@
     <?php if (isset($alert)) : ?>
         <p class="text-center bg-red-200 py-2 px-4 rounded mb-3 "><?= $alert ?></p>
     <?php endif ?>
-    <form action="/admin/teachers/store" method="POST" enctype="multipart/form-data" class="signForm centeredForm newTeacherForm p-4 bg-white w-1/2">
+    <form action="/admin/teachers/store" method="POST" enctype="multipart/form-data" class="flex flex-col  newUserForm p-4 bg-white w-11/12 items-center">
         <h2>Add New Facilitator</h2>
 
         <p class=" mt-4 mb-2 ml-2 font-bold">Personal Information</p>
+
+<!--        Personal Information -->
+
+        <div class="input-fields">
         <div class="form-group">
             <label for="" class="text-red-500">Last Name: </label>
             <input required type="text" placeholder="eg. Azaglo" name="last_name" class="form-input">
@@ -48,16 +52,21 @@
             <input required type="date" placeholder="Date of Birth" name="date_of_birth" class="form-input">
         </div>
 
+        </div>
+
         <p class="mb-4 ml-2 font-bold">Professional Information</p>
+
+        <div class="input-fields">
 
         <div class="form-group">
             <label for="" class="text-red-500 mb-2">Role of Teacher</label>
-            <div class="form-group flex flex-row mb-0">
+            <div class="form-group flex flex-row mb-0 w-100">
                 <div>
-                    <input required type="radio" name="teacher_type" value="class_teacher" onclick="toggleInput('class')"> Class Teacher
+                    <input required type="radio" name="teacher_type" value="Class Teacher" onclick="toggleInput('class')"> Class Teacher
                 </div>
                 <div>
-                    <input required type="radio" name="teacher_type" value="subject_teacher" onclick="toggleInput('subject')"> Subject Teacher
+                    <input required type="radio" name="teacher_type" value="Subject Teacher" onclick="toggleInput
+                    ('subject')"> Subject Teacher
                 </div>
             </div>
         </div>
@@ -81,6 +90,7 @@
             <!-- <input required type="text" placeholder="Subject" name="subject" class="form-input"> -->
         </div>
         <div class="form-group">
+            <label for="" class="mb-2 text-red-500">Qualification</label>
             <input required type="text" placeholder="Qualification" name="qualification" class="form-input">
         </div>
         <div class="form-group flex flex-col">
@@ -91,11 +101,10 @@
             <label for="" class="text-red-500">Date of Employment</label>
             <input required type="date" placeholder="Date of Employment" name="date_of_employment" class="form-input">
         </div>
-
-
-        <div class="form-group">
-            <input required type="submit" value="Add Teacher" class="form-btn">
         </div>
+
+            <input required type="submit" value="Add Teacher" class="form-btn align-self-end mt-2">
+
     </form>
 
 </main>

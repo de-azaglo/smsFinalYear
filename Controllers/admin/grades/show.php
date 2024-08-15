@@ -34,13 +34,13 @@ view('partials/admin/head.php', [
     'title' => $title,
 ]);
 
-view('partials/admin/side-nav.php', [
+view('partials/user/side-nav.php', [
     'grades' => $grades,
     'name' => $_SESSION['user']['last_name'],
     'user_type' => $_SESSION['user']['user_type']
 ]);
 
-view('partials/admin/nav.php', [
+view('partials/user/nav.php', [
     'name' => $_SESSION['user']['last_name']
 ]);
 

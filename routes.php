@@ -43,7 +43,7 @@ $router->post('/test', 'controllers/test.php')->only('admin');
 
 
 /* ------------------- Teacher Routes ------------------- */
-$router->get('/teacher/dashboard', 'controllers/facilitator/index.php')->only('facilitator');
+$router->get('/facilitator/dashboard', 'controllers/facilitator/index.php')->only('facilitator');
 
 /* ------------------- Parent Routes ------------------- */
 $router->get('/student/dashboard', 'controllers/student/index.php');

@@ -1,6 +1,9 @@
+
 <main class="home-section items-start bg-gray-200 rounded py-5">
 
     <?php
+
+
     $class = $grade['id'];
     ?>
     <style>
@@ -20,7 +23,7 @@
         <div class="mt-3 flex justify-between w-full bg-gray-100 rounded-2xl py-10px">
             <?php foreach ($grades as $grade) : ?>
                 <a href="/admin/academics/timetable?grade=<?= $grade['id'] ?>">
-                    <button class=" <?= $grade['id'] == $class_id ? 'active' : '' ?> rounded-2xl hover:bg-red-200  py-2 px-3"><?= $grade['grade_name'] ?></button>
+                    <button class=" <?= $grade['id'] == $class ? 'active' : '' ?> rounded-2xl hover:bg-red-200  py-2 px-3"><?= $grade['grade_name'] ?></button>
                 </a>
 
             <?php endforeach ?>
@@ -51,23 +54,13 @@
                     <div class="cells border-black border px-2 py-4 ">
                         <p class="text-sm"><?= $day['day'] ?></p>
                     </div>
-                    <?php foreach ($times as $time) : ?>
-                        <?php
-                        // var_dump($time);
-                        // var_dump($class);
-
-                        // var_dump($time['id']);
-                        // var_dump($day['id']);
+                    <?php foreach ($times as $time) :
                         $subject = getSubject($time['id'], $day['id'], $class);
 
-                        // var_dump($subject['subject_title']);
                         ?>
 
-
-
-
                         <div class="cells border-black border flex flex-col items-center justify-center">
-                            <p><?= $subject['subject_title'] ?></p>
+                            <p><?= $subject['subject_title'] ?? 'No Lesson' ?></p>
                         </div>
 
                     <?php endforeach ?>

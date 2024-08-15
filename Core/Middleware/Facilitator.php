@@ -7,7 +7,7 @@ class Facilitator
     {
         $user = $_SESSION['user'];
 
-        if ($user['user_type'] != 'teacher') {
+        if ($user['user_type'] != 'facilitator') {
         if ($_SESSION['user'] ?? false) {
             $databaseUserTypes = require base_path('database/user_types.php');
 

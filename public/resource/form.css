@@ -8,17 +8,20 @@
   display: none;
 }
 
-/* .newTeacherForm .input-group{
+/* .newUserForm .input-group{
     margin: 10px 0;
 } */
 
-.newTeacherForm{
-    overflow-y: scroll;
-    overflow-x: hidden;
-    /* width: 40% !important; */
+.newUserForm{
     box-shadow: 1px 1px 5px 3px rgb(158, 158, 158, 0.2);
     border-radius: 10px;
     padding: 10px;
+}
+
+.input-fields{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 1rem;
 }
 
 select:disabled{
@@ -26,18 +29,14 @@ select:disabled{
   color: rgb(143, 143, 143);
 }
 
-.newTeacherForm .form-group{
-    width: 80%;
+.newUserForm .form-group{
+    width: 85%;
     /* flex-direction: row!important; */
     justify-content: space-between;
 }
 
-.newTeacherForm .form-group .form-input{
+.newUserForm .form-group .form-input{
   width: 100%;
-}
-
-.newTeacherForm h2{
-    margin-top: 40px;
 }
 
 
@@ -65,11 +64,10 @@ select:disabled{
   width: 50%;
 }
 
-.signForm .form-input {
-  border: none;
-  border-bottom: 1px solid rgba(187, 187, 187, 0.973);
+.signForm .form-input, .newUserForm .form-input {
+  border: 1px solid rgba(187, 187, 187, 0.973);
   outline: none;
-  padding: 8px;
+  padding: 0.4rem;
 }
 
 .form-input:focus-visible {
@@ -77,7 +75,7 @@ select:disabled{
   border-bottom: 1.5px solid rgba(226, 0, 0) !important;
 }
 
-.signForm .form-btn {
+.form-btn {
 
   background-color: rgba(226, 0, 0);
   cursor: pointer;
