@@ -5,5 +5,5 @@ view('partials/head.php');
 view('partials/nav.php');
 
 
-var_dump(generateUserId('student'));
+// var_dump(generateUserId('student'));
 ?>
