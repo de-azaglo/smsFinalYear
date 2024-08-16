@@ -10,5 +10,5 @@ view("partials/guest-nav.php");
 view('guest/index.view.php');
 view('partials/footer.php');
 ?>
-
+ 
 
