@@ -6,12 +6,12 @@ use Core\Database;
 
 $db = new Database();
 $grades = $db->query('SELECT * FROM grades')->findAll();
-$number_of_students = $db->query('SELECT COUNT(*) AS row_count FROM students')->find();
-$male_student = $db->query('SELECT COUNT(*) AS row_count FROM students WHERE gender = "Male"')->find();
-$female_student = $db->query('SELECT COUNT(*) AS row_count FROM students WHERE gender = "Female"')->find();
+$number_of_students = $db->query('SELECT * FROM students')->rowCount();
+$male_student = $db->query('SELECT * FROM students WHERE gender = "Male"')->rowCount();
+$female_student = $db->query('SELECT* FROM students WHERE gender = "Female"')->rowCount();
 $teachers = $db->query('SELECT * FROM teachers')->findAll();
 $students = $db->query('SELECT * FROM students')->findAll();
-$number_of_teachers = $db->query('SELECT COUNT(*) AS row_count FROM teachers')->find();
+$number_of_teachers = $db->query('SELECT * FROM teachers')->rowCount();
 $today = date('Y-m-d');
 $events = $db->query('SELECT * FROM events where start_date = :start_date',[
     'start_date' => $today
@@ -44,9 +44,9 @@ view('admin/dashboard.view.php', [
     'teachers' => $teachers,
     'students' => $students,
     'events' => $events,
-    'number_of_student' => $number_of_students['row_count'],
+    'number_of_student' => $number_of_students,
     'students_present' => $students_present,
-    'number_of_teachers' => $number_of_teachers['row_count'],
+    'number_of_teachers' => $number_of_teachers,
     'male_student' => $male_student,
     'female_student' => $female_student
 ]);

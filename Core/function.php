@@ -106,4 +106,24 @@ function generateUserId($role, $db_table): string
     return $prefix . sprintf('%03d', $newNumericPart);
 }
 
+function checkStatus($date, $student_id, $class_id)
+{
+
+    $db = new Database();
+
+    $present_student = $db->query('SELECT * FROM attendance WHERE date = :today AND student_id = :student_id AND class_id = :class_id',[
+        'today' => $date,
+        'class_id' => $class_id,
+        'student_id' => $student_id
+    ])->find();
+
+
+    if ($present_student){
+        return $present_student['status'];
+    }
+
+    return "Not Marked";
+
+}
+
 

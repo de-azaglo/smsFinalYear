@@ -129,7 +129,7 @@
             <input class="form-control" type="file" name="cv" id="formFile" accept=".pdf">
         </div> -->
 
-            <input required type="submit" value="Add Teacher" class="form-btn align-self-end mt-2">
+            <input required type="submit" value="Add Student" class="form-btn align-self-end mt-2">
 
 
     </form>

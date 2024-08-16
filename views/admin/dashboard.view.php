@@ -149,10 +149,10 @@
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Male: <?= $male_student['row_count']?>', 'Female: <?= $female_student['row_count']?>'],
+            labels: ['Male: <?= $male_student?>', 'Female: <?= $female_student?>'],
             datasets: [{
                 label: 'My First Dataset',
-                data: ['<?= $male_student['row_count']?>', '<?= $female_student['row_count']?>'],
+                data: ['<?= $male_student?>', '<?= $female_student?>'],
                 backgroundColor: [
                     'rgba(165,180,252,1)',
                     'rgba(252,211,77,1)'

@@ -9,7 +9,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/../resource/form.css">
     <link rel="stylesheet" href="/../resource/css/admin/nav.css">
-<!--    <link rel="stylesheet" href="/../resource/bootstrap.min.css">-->
+    <link rel="stylesheet" href="/../resource/bootstrap.min.css">
+    <link rel="stylesheet" href="/../resource/css/facilitator/style.css">
     
     <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">

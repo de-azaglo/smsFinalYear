@@ -6,10 +6,13 @@
 
         <div class="logo-container">
             <i class='bx bx-menu'></i>
+            <p class="text-sm text-gray-400 ml-4"><?= $full_date ?></p>
         </div>
-        <div class="greeting-container">
+        <div class="greeting-container flex flex-col items-center">
             <p class="greeting-nav">Welcome Back, <span class="name-greeting"><?= $name ?></span></p>
+
         </div>
+
         <form action="/sessions" method="post">
             <input type="hidden" value="DELETE" name="_method">
             <button class="nav-login-btn">Logout</button>

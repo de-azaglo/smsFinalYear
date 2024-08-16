@@ -77,12 +77,18 @@ $db->query("INSERT INTO users (user_number, user_type, email, password, last_nam
     'last_name' => $last_name
 ]);
 
-
+ $db->query("UPDATE grades SET number_of_student = number_of_student + 1 WHERE id = :class_id",[
+     'class_id' => $grade
+]);
 
 
 
 
 $alert = "{$first_name} added to Grade {$grade}.";
 
+
 header("Location: /admin/students/create?alert=" . urlencode($alert));
 die();
+
+
+
