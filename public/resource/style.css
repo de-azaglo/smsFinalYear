@@ -492,6 +492,16 @@ footer {
     float: right; }
     .copy span i {
       margin-right: 20px; }
+      
+/* =================== Contact US Starts Here =================== */
+.contact-rooo .pr-0 {
+  padding-right: 0px; }
+.contact-rooo .cont-row {
+  margin-top: 10px; }
+  .contact-rooo .cont-row .col-sm-3 {
+    padding-right: 0px; }
+    .contact-rooo .cont-row .col-sm-3 span {
+      float: right; }
 
 /* =================== About US Starts Here =================== */
 .about-company {
