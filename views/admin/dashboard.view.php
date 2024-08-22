@@ -2,56 +2,56 @@
     <div class="card-container flex justify-between w-11/12">
         <div class="card py-4 px-5 flex flex-row items-center">
             <div class="bg-gray-100 flex justify-center items-center p-2 rounded">
-                <i class='bx bxs-graduation text-red-400 text-4xl'></i>
+                <i class='bx bxs-graduation text-red-400 text-3xl'></i>
             </div>
             <div class="caption ml-4">
                 <h3 class="text-2xl font-semibold">
                     <?= /** @var int $number_of_student */
                     $number_of_student ? : 0 ?>
                 </h3>
-                <p class="text-sm text-gray-500">
+                <p class="text-xs text-gray-500">
                     Total Student
                 </p>
             </div>
         </div>
         <div class="card py-4 px-5 flex flex-row items-center">
             <div class="bg-gray-100 flex justify-center items-center p-2 rounded">
-                <i class='bx bx-log-in text-red-400 text-4xl'></i>
+                <i class='bx bx-log-in text-red-400 text-3xl'></i>
             </div>
             <div class="caption ml-4">
                 <h3 class="text-2xl font-semibold">
                     <?= /** @var int $students_present */
                     $students_present ? : 0 ?>
                 </h3>
-                <p class="text-sm text-gray-500">
+                <p class="text-xs text-gray-500">
                     Student Present Today
                 </p>
             </div>
         </div>
         <div class="card py-4 px-5 flex flex-row items-center">
             <div class="bg-gray-100 flex justify-center items-center p-2 rounded">
-                <i class='bx bx-user-pin text-red-400 text-4xl'></i>
+                <i class='bx bx-user-pin text-red-400 text-3xl'></i>
             </div>
             <div class="caption ml-4">
                 <h3 class="text-2xl font-semibold">
                     <?= /** @var int $number_of_teachers */
                     $number_of_teachers ? : 0 ?>
                 </h3>
-                <p class="text-sm text-gray-500">
+                <p class="text-xs text-gray-500">
                     Total Teachers
                 </p>
             </div>
         </div>
         <div class="card py-4 px-5 flex flex-row items-center">
             <div class="bg-gray-100 flex justify-center items-center p-2 rounded">
-                <i class='bx bx bx-log-in text-red-400 text-4xl'></i>
+                <i class='bx bx bx-log-in text-red-400 text-3xl'></i>
             </div>
             <div class="caption ml-4">
                 <h3 class="text-2xl font-semibold">
                     <?= /** @var int $number_of_teachers */
                         $number_of_teachers ? : 0 ?>
                 </h3>
-                <p class="text-sm text-gray-500">
+                <p class="text-xs text-gray-500">
                     Teachers Present Today
                 </p>
             </div>
@@ -61,7 +61,7 @@
         <div class="card w-4/5 bg-white p-3 mr-5">
             <h3 class="mb-2 text-red-500 text-lg">Teacher's List</h3>
             <hr>
-            <table class="table  mt-3">
+            <table class="table mt-3">
                 <thead>
                 <tr>
                     <th>Full Name</th>

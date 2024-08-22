@@ -126,6 +126,15 @@
                     <li><a class="link_name" href="#">Dashboard</a></li>
                 </ul>
             </li>
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/timetable' ? 'active' : '' ?>">
+                <a href="/facilitator/timetable">
+                    <i class='bx bx-calendar'></i>
+                    <span class="link_name">Timetable</span>
+                </a>
+                <ul class="sub-menu blank ">
+                    <li><a class="link_name" href="#">Timetable</a></li>
+                </ul>
+            </li>
             <li class="<?= ($_SERVER['REQUEST_URI'] === '/admin/teachers/create' || $_SERVER['REQUEST_URI'] === '/admin/teachers/show') ? 'active' : '' ?>">
                 <div class="icon-link">
                     <a href="#">

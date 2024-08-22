@@ -44,6 +44,7 @@ $router->post('/test', 'controllers/test.php')->only('admin');
 
 /* ------------------- Teacher Routes ------------------- */
 $router->get('/facilitator/dashboard', 'controllers/facilitator/index.php')->only('facilitator');
+$router->get('/facilitator/timetable', 'controllers/facilitator/timetable/show.php')->only('facilitator');
 $router->post('/facilitator/attendance/mark', 'controllers/facilitator/attendance/store.php')->only('facilitator');
 
 /* ------------------- Parent Routes ------------------- */

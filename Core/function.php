@@ -127,3 +127,25 @@ function checkStatus($date, $student_id, $class_id)
 }
 
 
+function getSubject($time_id, $day, $grade)
+{
+    $db = new Database();
+
+    $lesson = $db->query("SELECT * FROM lesson_periods WHERE time_slot = :time_slot AND day = :day AND grade = :grade", [
+        'time_slot' => $time_id,
+        'day' => $day,
+        'grade' => $grade
+    ])->find();
+
+    // dd($lesson);
+    if ($lesson) {
+
+        return $db->query("SELECT * FROM subjects WHERE id= :subject_id", [
+            'subject_id' => $lesson['subject']
+        ])->find();
+    } else {
+        return NULL;
+    }
+}
+
+
