@@ -115,7 +115,7 @@
                 </div>
             </li>
         </ul>
-    <?php }elseif ($_SESSION['user']['user_type'] === 'facilitator' ?? false){ ?>
+    <?php } elseif ($_SESSION['user']['user_type'] === 'facilitator' ?? false) { ?>
         <ul class="side-nav-links">
             <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/dashboard' ? 'active' : '' ?>">
                 <a href="/facilitator/dashboard">
@@ -127,6 +127,20 @@
                 </ul>
             </li>
             <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/timetable' ? 'active' : '' ?>">
+                <div class="icon-link">
+                    <a href="#">
+                        <i class='bx bx-book-alt'></i>
+                        <span class="link_name">Academics</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Academics</a></li>
+                    <li><a href="/facilitator/calendar">Academic Calendar</a></li>
+                    <li><a href="/facilitator/timetable">Timetable</a></li>
+                </ul>
+            </li>
+            <!-- <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/timetable' || $_SERVER['REQUEST_URI'] ==='/facilitator/calendar' ? 'active' : '' ?>">
                 <a href="/facilitator/timetable">
                     <i class='bx bx-calendar'></i>
                     <span class="link_name">Timetable</span>
@@ -134,7 +148,7 @@
                 <ul class="sub-menu blank ">
                     <li><a class="link_name" href="#">Timetable</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li class="<?= ($_SERVER['REQUEST_URI'] === '/admin/teachers/create' || $_SERVER['REQUEST_URI'] === '/admin/teachers/show') ? 'active' : '' ?>">
                 <div class="icon-link">
                     <a href="#">
@@ -176,22 +190,7 @@
                     <li><a class="link_name" href="/admin/grades/show">Grades</a></li>
                 </ul>
             </li>
-            <li>
-                <div class="icon-link">
-                    <a href="#">
-                        <i class='bx bx-book-alt'></i>
-                        <span class="link_name">Academics</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Academics</a></li>
-                    <li><a href="/admin/academics/year/show">Academic Year</a></li>
-                    <li><a href="/admin/academics/event/create">Add Academic Events</a></li>
-                    <li><a href="/admin/academics/calendar">Calendar</a></li>
-                    <li><a href="/admin/academics/timetable">Timetable</a></li>
-                </ul>
-            </li>
+
             <li>
                 <a href="/admin/attendance">
                     <i class='bx bx-pie-chart-alt-2'></i>
@@ -235,7 +234,7 @@
                 </div>
             </li>
         </ul>
-    <?php }?>
+    <?php } ?>
 </div>
 <!-- <section class="home-section">
     <div class="home-content">

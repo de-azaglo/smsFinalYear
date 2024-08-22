@@ -1,3 +1,4 @@
+<?php $full_date = date('l, d-m-Y'); ?>
 <div class="horizontal-nav">
     <nav class="home-content">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

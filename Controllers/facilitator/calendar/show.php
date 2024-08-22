@@ -27,7 +27,7 @@ $academic_calender = $db->query("SELECT y.year, e.event_name, e.start_date, e.en
 
 
 
-view('partials/admin/head.php', [
+view('partials/facilitator/head.php', [
     'title' => $title,
 ]);
 
@@ -40,7 +40,7 @@ view('partials/user/nav.php', [
     'name' => $_SESSION['user']['last_name']
 ]);
 
-view('admin/academics/calendar/show.view.php', [
+view('facilitator/calendar/show.view.php', [
     // 'year' => $year,
     'academic_calender' => $academic_calender
     // 'events' => $events
