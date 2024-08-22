@@ -69,4 +69,4 @@ view('admin/academics/timetable/create.view.php', [
     'events' => $events
 ]);
 
-view('partials/footer.php');
+

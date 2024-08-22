@@ -38,4 +38,4 @@ view('admin/teachers/show.view.php', [
     'teachers' => $teachers,
     'teacher_type' => $teacher_type
 ]);
-view('partials/footer.php');
+

@@ -88,4 +88,4 @@ view('admin/academics/timetable/show.view.php', [
     'grades' => $grades,
 ]);
 
-view('partials/footer.php');
+

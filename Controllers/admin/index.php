@@ -5,7 +5,7 @@
 use Core\Database;
 
 $db = new Database();
-$grades = $db->query('SELECT * FROM grades')->findAll();
+$grades = $db->query('SELECT * FROM grades')->findAll(); 
 $number_of_students = $db->query('SELECT * FROM students')->rowCount();
 $male_student = $db->query('SELECT * FROM students WHERE gender = "Male"')->rowCount();
 $female_student = $db->query('SELECT* FROM students WHERE gender = "Female"')->rowCount();
@@ -20,6 +20,7 @@ $students_present = $db->query('SELECT * FROM attendance WHERE date = :today AND
     'today' => $today,
     'status' => 'Present'
 ])->fetchColumn();
+$full_date = date('l, d-m-Y');
 
 //dd($female_student);
 
@@ -36,7 +37,8 @@ view('partials/user/side-nav.php', [
     'user_type' => $_SESSION['user']['user_type']
 ]);
 view('partials/user/nav.php', [
-    'name' => $_SESSION['user']['last_name']
+    'name' => $_SESSION['user']['last_name'],
+    'full_date' => $full_date
 ]);
 
 view('admin/dashboard.view.php', [
@@ -50,4 +52,4 @@ view('admin/dashboard.view.php', [
     'male_student' => $male_student,
     'female_student' => $female_student
 ]);
-view('partials/footer.php');
+

@@ -31,4 +31,4 @@ view('admin/academics/year/show.view.php', [
 
 ]);
 
-view('partials/footer.php');
+

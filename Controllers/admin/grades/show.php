@@ -48,4 +48,4 @@ view('admin/grades/show.view.php', [
     'grades' => $grades
 ]);
 
-view('partials/footer.php');
+

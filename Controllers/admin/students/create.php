@@ -36,4 +36,3 @@ if (isset($alert)) {
     ]);
 }
 
-view('partials/footer.php');

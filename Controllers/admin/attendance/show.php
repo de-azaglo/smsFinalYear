@@ -106,4 +106,4 @@ view('admin/attendance/show.view.php', [
     'term_id' => $term_id
 ]);
 
-view('partials/footer.php');
+

@@ -43,5 +43,3 @@ view('admin/academics/calendar/show.view.php', [
     'year' => $year,
     'events' => $events
 ]);
-
-view('partials/footer.php');

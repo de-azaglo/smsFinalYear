@@ -37,4 +37,3 @@ view('admin/academics/year/create.view.php', [
 ]);
 }
 
-view('partials/footer.php');

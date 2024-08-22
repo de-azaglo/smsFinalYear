@@ -65,5 +65,5 @@ view('facilitator/dashboard.view.php', [
     'male_student' => $male_student,
     'female_student' => $female_student
 ]);
-view('partials/footer.php');
+
 

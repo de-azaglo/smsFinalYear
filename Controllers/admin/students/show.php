@@ -55,4 +55,4 @@ view('admin/students/show.view.php', [
     'class_id' => $class_id
 ]);
 
-view('partials/footer.php');
+

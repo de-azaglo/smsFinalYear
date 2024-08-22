@@ -42,4 +42,3 @@ if (isset($alert)) {
         'grades' => $grades,
     ]);
 }
-view('partials/footer.php');

@@ -19,5 +19,4 @@ view('partials/nav.php', [
 view('student.view.php', [
     'name' => $name,
 ]);
-view('partials/footer.php');
-?>
+
