@@ -6,7 +6,7 @@
     <meta name="base_pathport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
 
-    <!-- <link rel="stylesheet" href="/../resource/index.css"> -->
+    <link rel="stylesheet" href="/../resource/index.css">
     <!-- <link rel="stylesheet" href="/../resource/style.css"> -->
     <link rel="stylesheet" href="/../resource/form.css">
     <link rel="stylesheet" href="/../resource/nav.css">

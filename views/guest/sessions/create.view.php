@@ -3,7 +3,7 @@
 //     dd($errors);
 // }
 ?>
-<main>
+<main class="login">
     <section class="login-left">
         <form action="/sessions" class="signForm" method="POST">
             <div class="upper">
