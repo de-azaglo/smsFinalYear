@@ -41,7 +41,7 @@ view('partials/user/nav.php', [
     'full_date' => $full_date
 ]);
 
-view('students/dashboard.view.php', [
+view('student/dashboard.view.php', [
     'name' => $_SESSION['user']['last_name'],
     'teachers' => $teachers,
     'students' => $students,

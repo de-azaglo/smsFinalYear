@@ -203,6 +203,91 @@
             </li>
 
         </ul>
+    <?php } 
+    elseif ($_SESSION['user']['user_type'] === 'student' ?? false) { ?>
+        <ul class="side-nav-links ">
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/student/dashboard' ? 'active' : '' ?>">
+                <div class="icon-link">
+                    <a href="/facilitator/dashboard">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">Dashboard</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank ">
+                    <li><a class="link_name" href="#">Dashboard</a></li>
+                </ul>
+            </li>
+
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/calendar' ? 'active' : '' ?>">
+                <div class="icon-link">
+                    <a href="/student/calendar">
+                        <i class='bx bx-calendar'></i>
+                        <span class="link_name">Academic Calendar</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank ">
+                    <li><a class="link_name" href="#">Academic Calendar</a></li>
+                </ul>
+            </li>
+
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/timetable' ? 'active' : '' ?>">
+                <div class="icon-link">
+                    <a href="/student/timetable">
+                        <i class='bx bx-table'></i>
+                        <span class="link_name">Timetable</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank ">
+                    <li><a class="link_name" href="#">Timetable</a></li>
+                </ul>
+            </li>
+
+            <!-- <li>
+                <a href="/facilitator/attendance">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Attendance</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Attendance</a></li>
+                </ul>
+            </li> -->
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/assessment' ? 'active' : '' ?>">
+
+                <div class="icon-link">
+                    <a href="/student/assessment">
+                        <i class='bx bx-line-chart'></i>
+                        <span class="link_name">Assessment</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Assessment</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Setting</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Setting</a></li>
+                </ul>
+            </li>
+            <li class="profile-container mt-auto">
+                <div class="icon-link">
+                    <a href="">
+                        <form action="/sessions" method="post">
+                            <input type="hidden" value="DELETE" name="_method">
+                            <button class="logout-btn-side-nav"><i class='bx bx-log-out'></i></button>
+                        </form>
+                        <span class="link_name">Log Out</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Log Out</a></li>
+                </ul>
+            </li>
+
+        </ul>
     <?php } ?>
 </div>
 <!-- <section class="home-section">

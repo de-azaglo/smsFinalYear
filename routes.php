@@ -52,5 +52,8 @@ $router->get('/facilitator/assessment', 'controllers/facilitator/assessment/show
 $router->post('/facilitator/assessment', 'controllers/facilitator/assessment/store.php')->only('facilitator');
 $router->post('/facilitator/attendance/mark', 'controllers/facilitator/attendance/store.php')->only('facilitator');
 
-/* ------------------- Parent Routes ------------------- */
-$router->get('/student/dashboard', 'controllers/student/index.php');
+/* ------------------- Student Routes ------------------- */
+$router->get('/student/dashboard', 'controllers/student/index.php')->only('student');
+$router->get('/student/timetable', 'controllers/student/timetable/show.php')->only('student');
+$router->get('/student/calendar', 'controllers/student/calendar/show.php')->only('student');
+$router->get('/student/assessment', 'controllers/student/assessment/show.php')->only('student');
