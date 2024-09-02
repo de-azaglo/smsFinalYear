@@ -68,7 +68,7 @@ class Router
 
     }
 
-    #[NoReturn] protected function abort($code = 404): void
+    protected function abort($code = 404): void
     {
         http_response_code($code);
         view('/errors/404.php');

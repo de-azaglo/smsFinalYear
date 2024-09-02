@@ -44,8 +44,7 @@
             </div>
             <div class="caption ml-4">
                 <h3 class="text-2xl font-semibold">
-                    <?= /** @var int $number_of_teachers */
-                    $number_of_teachers ? : 0 ?>
+                    6
                 </h3>
                 <p class="text-sm text-gray-500">
                     Homeworks to give
@@ -81,7 +80,7 @@
                         <td>
                             <?= checkStatus($today, $student['user_number'], $grade['id'])?>
                         </td>
-                        <td class="flex justify-around">
+                        <td class="flex justify-around"> 
                             <button class="action-btn btn btn-success" data-status="Present">Present</button>
                             <button class="action-btn btn btn-danger" data-status="Absent">Absent</button>
                         </td>

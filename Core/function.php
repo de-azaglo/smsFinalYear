@@ -22,7 +22,7 @@ function view($path, $attributes = []): void
     require base_path('views/' . $path);
 }
 
-#[NoReturn] function dd($obj)
+ function dd($obj)
 {
     var_dump($obj);
     die();

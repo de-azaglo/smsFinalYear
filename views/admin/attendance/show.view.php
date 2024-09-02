@@ -25,19 +25,20 @@
         <?php if (empty($students)) { ?>
             <p class="bg-red-200 text-center inline py-2 px-3 mt-2 rounded-xl">No Students</p>
         <?php } else { ?>
-            <?php foreach ($students as $student) : ?>
-                <table class="table table table-striped table-bordered mt-3">
-                    <thead>
-                        <tr>
-                            <th>Name of Student</th>
-                            <th>Attendance</th>
-                            <th>Status Today</th>
-                        </tr>
-                    </thead>
+
+            <table class="table table table-striped table-bordered mt-3">
+                <thead>
+                    <tr>
+                        <th>Name of Student</th>
+                        <th>Attendance</th>
+                        <th>Status Today</th>
+                    </tr>
+                </thead>
 
 
 
-                    <tbody>
+                <tbody>
+                    <?php foreach ($students as $student) : ?>
                         <tr>
                             <td><?= $student['last_name'] ?> <?= $student['first_name'] ?> <?= $student['other_name'] ?></td>
                             <?php
@@ -54,8 +55,8 @@
 
                 <?php } ?>
 
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
     </div>
 </main>
 

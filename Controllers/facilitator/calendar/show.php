@@ -1,5 +1,5 @@
 <?php
-$title = 'Grades';
+$title = 'Academic Calendar';
 
 use Core\Database;
 

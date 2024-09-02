@@ -29,12 +29,14 @@ $router->post('/admin/students/store', 'controllers/admin/students/store.php')->
 $router->get('/admin/grades/show', 'controllers/admin/grades/show.php')->only('admin');
 $router->get('/admin/grades/show', 'controllers/admin/grades/show.php')->only('admin');
 $router->get('/admin/attendance', 'controllers/admin/attendance/show.php')->only('admin');
+$router->get('/admin/assessment', 'controllers/admin/assessment/show.php')->only('admin');
 $router->get('/admin/academics/calendar', 'controllers/admin/academics/calendar/show.php')->only('admin');
 $router->get('/admin/academics/event/create', 'controllers/admin/academics/event/create.php')->only('admin');
 $router->post('/admin/academics/event/store', 'controllers/admin/academics/event/store.php')->only('admin');
 $router->get('/admin/academics/year/show', 'controllers/admin/academics/year/show.php')->only('admin');
 $router->get('/admin/academics/year/create', 'controllers/admin/academics/year/create.php')->only('admin');
 $router->post('/admin/academics/year/store', 'controllers/admin/academics/year/store.php')->only('admin');
+$router->get('/admin/academics/terms/show', 'controllers/admin/academics/terms/show.php')->only('admin');
 $router->get('/admin/academics/timetable', 'controllers/admin/academics/timetable/show.php')->only('admin');
 $router->get('/admin/academics/timetable/create', 'controllers/admin/academics/timetable/create.php')->only('admin');
 $router->post('/admin/academics/timetable/store', 'controllers/admin/academics/timetable/store.php')->only('admin');
@@ -46,6 +48,8 @@ $router->post('/test', 'controllers/test.php')->only('admin');
 $router->get('/facilitator/dashboard', 'controllers/facilitator/index.php')->only('facilitator');
 $router->get('/facilitator/timetable', 'controllers/facilitator/timetable/show.php')->only('facilitator');
 $router->get('/facilitator/calendar', 'controllers/facilitator/calendar/show.php')->only('facilitator');
+$router->get('/facilitator/assessment', 'controllers/facilitator/assessment/show.php')->only('facilitator');
+$router->post('/facilitator/assessment', 'controllers/facilitator/assessment/store.php')->only('facilitator');
 $router->post('/facilitator/attendance/mark', 'controllers/facilitator/attendance/store.php')->only('facilitator');
 
 /* ------------------- Parent Routes ------------------- */

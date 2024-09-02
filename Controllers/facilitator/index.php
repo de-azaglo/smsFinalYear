@@ -1,9 +1,7 @@
 <?php
-// $user_number = generateUserId('student', 'teachers');
 
 use Core\Database;
 
-//dd($_SESSION);
 
 
 
@@ -12,13 +10,13 @@ $grade = $db->query('SELECT * FROM grades WHERE class_teacher_number = :user_id'
     'user_id' => $_SESSION['user']['user_number']
 ])->find();
 
-//dd($grade);
+
 $students = $db->query('SELECT * FROM students WHERE class_id = :class_id',[
     'class_id' => $grade['id']
 ])->findAll();
 $male_student = $db->query('SELECT * FROM students WHERE gender = "Male"')->rowCount();
 $female_student = $db->query('SELECT * FROM students WHERE gender = "Female"')->rowCount();
-$number_of_teachers = $db->query('SELECT *  FROM teachers')->rowCount();
+
  $today = date('Y-m-d');
 $full_date = date('l, d-m-Y');
 $events = $db->query('SELECT * FROM events where start_date = :start_date',[
@@ -61,7 +59,6 @@ view('facilitator/dashboard.view.php', [
     'active_term' =>$active_term['id'],
     'students' =>$students ,
     'students_present' => $students_present,
-    'number_of_teachers' => $number_of_teachers,
     'male_student' => $male_student,
     'female_student' => $female_student
 ]);

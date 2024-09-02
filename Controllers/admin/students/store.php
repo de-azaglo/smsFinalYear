@@ -9,6 +9,7 @@ $db = new Database();
 
 $user_number = generateUserId('student', 'students');
 error_log($user_number);
+$student_mail = $user_number."@gmail.com";
 
 // Guardian's Information
 $guardian_user_number = generateUserId('parent', 'guardians');
@@ -54,7 +55,7 @@ $blood_group = $_POST['blood_group'];
 $grade = $_POST['grade'];
 
 // Insert into 'students' database
-$db->query("INSERT INTO students ( user_number, first_name, last_name, other_name, gender, date_of_birth, date_of_admission, height, blood_group, class_id, address, parent_id) VALUES (:user_number, :first_name, :last_name, :other_name, :gender, :date_of_birth, :date_of_admission, :height, :blood_group, :class_id, :address, :parent_id)", [
+$db->query("INSERT INTO students ( user_number, first_name, last_name, other_name, gender, date_of_birth, date_of_admission, height, blood_group, class_id, address, parent_id, email) VALUES (:user_number, :first_name, :last_name, :other_name, :gender, :date_of_birth, :date_of_admission, :height, :blood_group, :class_id, :address, :parent_id, :email)", [
     'user_number' => $user_number,
     'first_name' => $first_name,
     'last_name' => $last_name,
@@ -72,7 +73,7 @@ $db->query("INSERT INTO students ( user_number, first_name, last_name, other_nam
 $db->query("INSERT INTO users (user_number, user_type, email, password, last_name) VALUES(:user_number, :user_type, :email, :password, :last_name)", [
     'user_number' => $user_number,
     'user_type' => 'student',
-    'email' => NULL,
+    'email' => $student_mail,
     'password' => 'default',
     'last_name' => $last_name
 ]);
