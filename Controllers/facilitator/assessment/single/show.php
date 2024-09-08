@@ -8,36 +8,32 @@ $db = new Database();
 $user_number = $_SESSION['user']['user_number'];
 
 
+$student_id = isset($_GET['student_id']) ? $_GET['student_id'] : '';
+
+
 
 
 $student = $db->query('SELECT * FROM students WHERE user_number = :user_number', [
-    'user_number' => $user_number
+    'user_number' => $student_id
 ])->find();
 // dd($student);
 
-$grade = $db->query("SELECT * FROM grades WHERE id = :id",[
+$grade = $db->query("SELECT * FROM grades WHERE id = :id", [
     'id' => $student['class_id']
 ])->find();
 
-$jhs_subjects = $db->query('SELECT * FROM subjects WHERE examinable = "true" AND id NOT IN (7, 9)')->findAll();
-
-$primary_subjects = $db->query('SELECT * FROM subjects WHERE examinable = "true" AND id NOT IN (23)')->findAll();
 
 
-if($grade['id'] <= 7 ){
-    $subjects = $primary_subjects;
 
-} else {
-    $subjects = $primary_subjects;
-}
 
 $assessments = $db->query('SELECT s.user_number, s.first_name, s.other_name, s.last_name, subj.subject_title, a.class_score, a.exam_weighted, a.final_score, a.subject_id
 FROM assessment a
 JOIN students s ON a.student_id = s.user_number
 JOIN subjects subj ON a.subject_id = subj.id
-WHERE a.student_id = :user_number',[
+WHERE a.student_id = :user_number', [
     'user_number' => $student['user_number']
 ])->findAll();
+
 
 $class_scores = $db->query('SELECT * FROM assessment WHERE class_id = :class_id', [
     'class_id' => $student['class_id']
@@ -45,14 +41,18 @@ $class_scores = $db->query('SELECT * FROM assessment WHERE class_id = :class_id'
 
 
 
-function getScore($student_id, $subject_id, $score_type){
-    $db = new Database();
+// function getScore($subject_id, $score_type)
+// {
+//     global $student_id;
 
-   return $db->query('SELECT ' .$score_type. ' FROM assessment WHERE student_id = :student_id AND subject_id = :subject_id',[
-        'student_id' => $student_id,
-        'subject_id' => $subject_id
-    ])->find();
-}
+
+//     $db = new Database();
+
+//     return $db->query('SELECT ' . $score_type . ' FROM assessment WHERE student_id = :student_id AND subject_id = :subject_id', [
+//         'student_id' => $student_id,
+//         'subject_id' => $subject_id
+//     ])->find();
+// }
 
 $scores = [];
 foreach ($class_scores as $class_score) {
@@ -69,12 +69,13 @@ foreach ($class_scores as $class_score) {
 }
 
 
-function getGrade($score){
+function getGrade($score)
+{
     switch ($score) {
-        case ($score >= 80) :
+        case ($score >= 80):
             return "Advance";
             break;
-        case ($score >= 75 && $score <= 79  ):
+        case ($score >= 75 && $score <= 79):
             return "Proficient";
             break;
         case ($score >= 70 && $score <= 75):
@@ -108,6 +109,9 @@ function getStudentPositionInSubject($subject_id, $student_id, $scores)
     // print_r($scores);
     // echo '</pre>';
 
+
+
+
     $subject_scores = [];
 
     // Extract scores for the specified subject
@@ -135,12 +139,11 @@ function getStudentPositionInSubject($subject_id, $student_id, $scores)
             $rank = $position_counter;
         }
 
-        
+
 
         // If the current student matches the specified student, return rank
         if ($id == $student_id) {
             return $rank;
-            
         }
 
 
@@ -150,9 +153,10 @@ function getStudentPositionInSubject($subject_id, $student_id, $scores)
 
     return null; // Return null if the student or subject is not found
 }
-function getOverallPosition($student_id, $scores)
+function getOverallPosition($scores, $student_id)
 {
     $total_scores = [];
+
 
     // Step 1: Calculate total scores for each student
     foreach ($scores as $id => $data) {
@@ -190,10 +194,10 @@ function getOverallPosition($student_id, $scores)
 
 
 
-$year = $db->query("SELECT * FROM academic_year WHERE status = :status",[
+$year = $db->query("SELECT * FROM academic_year WHERE status = :status", [
     'status' => "active"
 ])->find();
-$terms = $db->query("SELECT * FROM terms WHERE status = :status",[
+$terms = $db->query("SELECT * FROM terms WHERE status = :status", [
     'status' => "active"
 ])->find();
 
@@ -222,9 +226,9 @@ view('partials/user/nav.php', [
     'name' => $_SESSION['user']['last_name']
 ]);
 
-view('student/assessment/show.view.php', [
+view('/facilitator/assessment/single/show.view.php', [
     'student' => $student,
-    'subjects' => $subjects,
+    // 'subjects' => $subjects,
     'grade' => $grade,
     'year' => $year,
     'terms' => $terms,

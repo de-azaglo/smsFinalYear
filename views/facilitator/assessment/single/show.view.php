@@ -1,8 +1,4 @@
 <style>
-
-
-
-
     th,
     td {
         padding: 8px 12px;
@@ -79,9 +75,9 @@
     <div class=" p-4 bg-white w-11/12 flex flex-col items-center">
         <div class="flex justify-between items-center pb-3 border-b-2 border-red-500 w-full">
             <h1 class="text-3xl font-bold">Assessment</h1>
-            <!-- <a href="/admin/academics/year/create">
-                <button class="bg-red-500 text-white p-2">Print Calendar</button>
-            </a> -->
+            <a href="/facilitator/assessment">
+                <button class="bg-red-500 text-white p-2">Go Back</button>
+            </a>
         </div>
 
 
@@ -95,7 +91,7 @@
                 <p class="text-lg">Class: <strong>Grade <?= $student['class_id'] ?> </strong></p>
                 <p class="text-lg">No. of Learners: <strong><?= $grade['number_of_student'] ?></strong></p>
                 <p class="text-lg">Term: <strong><?= $terms['term_name'] ?></strong></p>
-                <p class="text-lg">Position: <strong><?= getOverallPosition($student['user_number'], $scores) ?></strong></p>
+                <p class="text-lg">Position: <strong><?= getOverallPosition($scores, $student['user_number']) ?></strong></p>
             </div>
 
 
@@ -117,14 +113,14 @@
                     <tbody>
                         <?php foreach ($assessments as $assessment): ?>
                             <tr>
-                                <td ><?= $assessment['subject_title'] ?> </td>
-                                <td ><?= $assessment['class_score'] ?> </td>
-                                <td ><?= $assessment['exam_weighted'] ?> </td>
-                                <td ><?= $assessment['final_score'] ?> </td>
-                                <td ><?= getGrade($assessment['final_score']) ?> </td>
-                                <td ><?= getStudentPositionInSubject($assessment['subject_id'], $assessment['user_number'], $scores)?> </td>
+                                <td><?= $assessment['subject_title'] ?> </td>
+                                <td><?= $assessment['class_score'] ?> </td>
+                                <td><?= $assessment['exam_weighted'] ?> </td>
+                                <td><?= $assessment['final_score'] ?> </td>
+                                <td><?= getGrade($assessment['final_score']) ?> </td>
+                                <td><?= getStudentPositionInSubject($assessment['subject_id'], $assessment['user_number'], $scores) ?> </td>
 
-                                
+
 
 
                             </tr>

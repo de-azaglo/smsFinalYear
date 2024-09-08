@@ -157,15 +157,15 @@
                 </ul>
             </li>
 
-            <!-- <li>
-                <a href="/facilitator/attendance">
-                    <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="link_name">Attendance</span>
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/assignment' ? 'active' : '' ?>">
+                <a href="/facilitator/assignments">
+                    <i class='bx bx-book-alt'></i>
+                    <span class="link_name">Assignment</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Attendance</a></li>
+                    <li><a class="link_name" href="#">Assignment</a></li>
                 </ul>
-            </li> -->
+            </li>
             <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/assessment' ? 'active' : '' ?>">
 
                 <div class="icon-link">
@@ -176,6 +176,18 @@
                 </div>
                 <ul class="sub-menu blank">
                     <li><a class="link_name" href="#">Assessment</a></li>
+                </ul>
+            </li>
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/resources' ? 'active' : '' ?>">
+
+                <div class="icon-link">
+                    <a href="/facilitator/resources">
+                        <i class='bx bx-folder'></i>
+                        <span class="link_name">Resources</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Resources</a></li>
                 </ul>
             </li>
             <li>
@@ -203,12 +215,13 @@
             </li>
 
         </ul>
-    <?php } 
+    <?php }
+    // Student's Side Nav
     elseif ($_SESSION['user']['user_type'] === 'student' ?? false) { ?>
         <ul class="side-nav-links ">
             <li class="<?= $_SERVER['REQUEST_URI'] === '/student/dashboard' ? 'active' : '' ?>">
                 <div class="icon-link">
-                    <a href="/facilitator/dashboard">
+                    <a href="/student/dashboard">
                         <i class='bx bx-grid-alt'></i>
                         <span class="link_name">Dashboard</span>
                     </a>
@@ -218,7 +231,7 @@
                 </ul>
             </li>
 
-            <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/calendar' ? 'active' : '' ?>">
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/student/calendar' ? 'active' : '' ?>">
                 <div class="icon-link">
                     <a href="/student/calendar">
                         <i class='bx bx-calendar'></i>
@@ -239,6 +252,28 @@
                 </div>
                 <ul class="sub-menu blank ">
                     <li><a class="link_name" href="#">Timetable</a></li>
+                </ul>
+            </li>
+
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/student/assignment' ? 'active' : '' ?>">
+                <a href="/student/assignments">
+                    <i class='bx bx-book-alt'></i>
+                    <span class="link_name">Assignment</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Assignment</a></li>
+                </ul>
+            </li>
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/student/resources' ? 'active' : '' ?>">
+
+                <div class="icon-link">
+                    <a href="/student/resources">
+                        <i class='bx bx-folder'></i>
+                        <span class="link_name">Resources</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Resources</a></li>
                 </ul>
             </li>
 
@@ -290,9 +325,3 @@
         </ul>
     <?php } ?>
 </div>
-<!-- <section class="home-section">
-    <div class="home-content">
-        
-        <span class="text">Drop Down Sidebar</span>
-    </div>
-</section> -->

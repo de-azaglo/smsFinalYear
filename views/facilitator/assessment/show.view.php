@@ -128,7 +128,11 @@
                                 <td>Exam Score</td>
                             </tr> -->
                             <tr>
-                                <td class="fixed-column"><?= $student['first_name'] ?> <?= $student['other_name'] ?> <?= $student['last_name'] ?></td>
+
+                                <td class="fixed-column">
+                                    <a href="/facilitator/assessment/single?student_id=<?= $student['user_number'] ?>"><?= $student['first_name'] ?> <?= $student['other_name'] ?> <?= $student['last_name'] ?></a>
+                                </td>
+
 
                                 <?php foreach ($subjects as $subject): ?>
                                     <td class="score_cell" data-score="Class" data-student="<?= $student['user_number'] ?>" data-subject="<?= $subject['id'] ?>" data-student-name="<?= $student['first_name'] ?>" data-subject-title="<?= $subject['subject_title'] ?>">
@@ -145,7 +149,7 @@
                                         ?>
                                     </td>
                                     <td class="score_cell" data-score="Exam" data-student="<?= $student['user_number'] ?>" data-subject="<?= $subject['id'] ?>" data-student-name="<?= $student['first_name'] ?>" data-subject-title="<?= $subject['subject_title'] ?>">
-                                        <?php 
+                                        <?php
                                         $exam_score = getScore($student['user_number'], $subject['id'], 'exam_weighted');
 
                                         if ($exam_score === false) {
@@ -161,16 +165,16 @@
                                     </td>
                                     <td>
                                         <?php
-                                    $final_score = getScore($student['user_number'], $subject['id'], 'final_score');
+                                        $final_score = getScore($student['user_number'], $subject['id'], 'final_score');
 
-                                    if ($final_score === false) {
-                                        $final_score = [];
-                                    }
+                                        if ($final_score === false) {
+                                            $final_score = [];
+                                        }
 
-                                    if (!isset($final_score['final_score'])) {
-                                        $final_score['final_score'] = 0;
-                                    }
-                                    echo $final_score['final_score'];
+                                        if (!isset($final_score['final_score'])) {
+                                            $final_score['final_score'] = 0;
+                                        }
+                                        echo $final_score['final_score'];
                                         ?>
                                     </td>
                                 <?php endforeach ?>

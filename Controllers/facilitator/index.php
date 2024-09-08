@@ -33,7 +33,15 @@ $students_present = $db->query('SELECT * FROM attendance WHERE date = :today AND
 $academic_year = $db->query('SELECT * FROM academic_year where status = "active"')->find();
 $active_term = $db->query('SELECT * FROM terms where status = "active"')->find();
 
-
+if ($grade['id'] < 4 && date('l') != 'Friday') {
+    $numberOfHomeworks = 3;
+} elseif ($grade['id'] < 4 && date('l') == 'Friday') {
+    $numberOfHomeworks = 4;
+} elseif ($grade['id'] >= 4 && date('l') != 'Friday') {
+    $numberOfHomeworks = 4;
+} elseif ($grade['id'] >= 4 && date('l') == 'Friday') {
+    $numberOfHomeworks = 5;
+}
 
 
 
@@ -60,7 +68,8 @@ view('facilitator/dashboard.view.php', [
     'students' =>$students ,
     'students_present' => $students_present,
     'male_student' => $male_student,
-    'female_student' => $female_student
+    'female_student' => $female_student,
+    'numberOfHomeworks' => $numberOfHomeworks
 ]);
 
 

@@ -67,9 +67,9 @@ if ($assessment > 0) {
 
     die();
 }
-$term = $db->query("SELECT * FROM terms where year = :year AND status = 'active'", [
-    'year' => $year['year']
-])->findAll();
+
+
+$term = $db->query("SELECT * FROM terms where status = 'active'")->find();
 
 
 if($assessment < 1){

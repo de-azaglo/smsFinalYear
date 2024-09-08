@@ -1,5 +1,4 @@
 <?php
-use Core\Database;
 
 // $title = 'LMIS';
 

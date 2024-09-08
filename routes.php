@@ -49,11 +49,23 @@ $router->get('/facilitator/dashboard', 'controllers/facilitator/index.php')->onl
 $router->get('/facilitator/timetable', 'controllers/facilitator/timetable/show.php')->only('facilitator');
 $router->get('/facilitator/calendar', 'controllers/facilitator/calendar/show.php')->only('facilitator');
 $router->get('/facilitator/assessment', 'controllers/facilitator/assessment/show.php')->only('facilitator');
+$router->get('/facilitator/assessment/single', 'controllers/facilitator/assessment/single/show.php')->only('facilitator');
 $router->post('/facilitator/assessment', 'controllers/facilitator/assessment/store.php')->only('facilitator');
 $router->post('/facilitator/attendance/mark', 'controllers/facilitator/attendance/store.php')->only('facilitator');
+$router->get('/facilitator/assignments', 'controllers/facilitator/assignment/show.php')->only('facilitator');
+$router->get('/facilitator/assignment/add', 'controllers/facilitator/assignment/create.php')->only('facilitator');
+$router->get('/facilitator/assignment', 'controllers/facilitator/assignment/single/show.php')->only('facilitator');
+$router->post('/facilitator/assignment', 'controllers/facilitator/assignment/store.php')->only('facilitator');
+$router->get('/facilitator/resources', 'controllers/facilitator/resources/show.php')->only('facilitator');
+$router->get('/facilitator/resources/add', 'controllers/facilitator/resources/create.php')->only('facilitator');
+$router->post('/facilitator/resources', 'controllers/facilitator/resources/store.php')->only('facilitator');
 
 /* ------------------- Student Routes ------------------- */
 $router->get('/student/dashboard', 'controllers/student/index.php')->only('student');
 $router->get('/student/timetable', 'controllers/student/timetable/show.php')->only('student');
 $router->get('/student/calendar', 'controllers/student/calendar/show.php')->only('student');
+$router->get('/student/assignments', 'controllers/student/assignment/show.php')->only('student');
+$router->get('/student/assignment', 'controllers/student/assignment/single/show.php')->only('student');
+$router->post('/student/assignment/submit', 'controllers/student/assignment/single/submit.php')->only('student');
 $router->get('/student/assessment', 'controllers/student/assessment/show.php')->only('student');
+$router->get('/student/resources', 'controllers/student/resources/show.php')->only('student');
