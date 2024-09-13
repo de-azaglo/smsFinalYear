@@ -94,12 +94,12 @@
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="/settings">
                     <i class='bx bx-cog'></i>
                     <span class="link_name">Setting</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Setting</a></li>
+                    <li><a class="link_name" href="/settings">Setting</a></li>
                 </ul>
             </li>
             <li class="profile-container mt-auto">
@@ -191,12 +191,12 @@
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="/settings">
                     <i class='bx bx-cog'></i>
                     <span class="link_name">Setting</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Setting</a></li>
+                    <li><a class="link_name" href="/settings">Setting</a></li>
                 </ul>
             </li>
             <li class="profile-container mt-auto">
@@ -243,7 +243,7 @@
                 </ul>
             </li>
 
-            <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/timetable' ? 'active' : '' ?>">
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/student/timetable' ? 'active' : '' ?>">
                 <div class="icon-link">
                     <a href="/student/timetable">
                         <i class='bx bx-table'></i>
@@ -286,7 +286,7 @@
                     <li><a class="link_name" href="#">Attendance</a></li>
                 </ul>
             </li> -->
-            <li class="<?= $_SERVER['REQUEST_URI'] === '/facilitator/assessment' ? 'active' : '' ?>">
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/student/assessment' ? 'active' : '' ?>">
 
                 <div class="icon-link">
                     <a href="/student/assessment">
@@ -299,12 +299,89 @@
                 </ul>
             </li>
             <li>
-                <a href="#">
+                <a href="/settings">
                     <i class='bx bx-cog'></i>
                     <span class="link_name">Setting</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Setting</a></li>
+                    <li><a class="link_name" href="/settings">Setting</a></li>
+                </ul>
+            </li>
+            <li class="profile-container mt-auto">
+                <div class="icon-link">
+                    <a href="">
+                        <form action="/sessions" method="post">
+                            <input type="hidden" value="DELETE" name="_method">
+                            <button class="logout-btn-side-nav"><i class='bx bx-log-out'></i></button>
+                        </form>
+                        <span class="link_name">Log Out</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Log Out</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    <?php }
+    // Parent's Side Nav
+    elseif ($_SESSION['user']['user_type'] === 'parent' ?? false) { ?>
+        <ul class="side-nav-links ">
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/parent/dashboard' ? 'active' : '' ?>">
+                <div class="icon-link">
+                    <a href="/parent/dashboard">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">Dashboard</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank ">
+                    <li><a class="link_name" href="#">Dashboard</a></li>
+                </ul>
+            </li>
+
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/parent/calendar' ? 'active' : '' ?>">
+                <div class="icon-link">
+                    <a href="/parent/calendar">
+                        <i class='bx bx-calendar'></i>
+                        <span class="link_name">Academic Calendar</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank ">
+                    <li><a class="link_name" href="#">Academic Calendar</a></li>
+                </ul>
+            </li>
+
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/parent/timetable' ? 'active' : '' ?>">
+                <div class="icon-link">
+                    <a href="/parent/timetable">
+                        <i class='bx bx-table'></i>
+                        <span class="link_name">Timetable</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank ">
+                    <li><a class="link_name" href="#">Timetable</a></li>
+                </ul>
+            </li>
+
+            <li class="<?= $_SERVER['REQUEST_URI'] === '/parent/assessment' ? 'active' : '' ?>">
+
+                <div class="icon-link">
+                    <a href="/parent/assessment">
+                        <i class='bx bx-line-chart'></i>
+                        <span class="link_name">Assessment</span>
+                    </a>
+                </div>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Assessment</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/settings">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Setting</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="/settings">Setting</a></li>
                 </ul>
             </li>
             <li class="profile-container mt-auto">

@@ -16,6 +16,8 @@ $router->get('/contact', 'controllers/guest/contact.php')->only('guest');
 $router->get('/login', 'controllers/guest/sessions/create.php')->only('guest');
 $router->post('/sessions', 'controllers/guest/sessions/store.php')->only('guest');
 $router->delete('/sessions', 'controllers/guest/sessions/destroy.php')->only('auth');
+$router->get('/settings', 'controllers/settings.php')->only('auth');
+$router->post('/settings/save', 'controllers/save.settings.php')->only('auth');
 
 /* ------------------- Admin Routes ------------------- */
 $router->get('/admin/dashboard', 'controllers/admin/index.php')->only('admin');
@@ -69,3 +71,11 @@ $router->get('/student/assignment', 'controllers/student/assignment/single/show.
 $router->post('/student/assignment/submit', 'controllers/student/assignment/single/submit.php')->only('student');
 $router->get('/student/assessment', 'controllers/student/assessment/show.php')->only('student');
 $router->get('/student/resources', 'controllers/student/resources/show.php')->only('student');
+
+/* ------------------- Parent Routes ------------------- */
+$router->get('/parent/dashboard', 'controllers/parent/index.php')->only('parent');
+$router->get('/parent/timetable', 'controllers/parent/timetable/show.php')->only('parent');
+$router->get('/parent/calendar', 'controllers/parent/calendar/show.php')->only('parent');
+$router->get('/parent/assessment', 'controllers/parent/assessment/show.php')->only('parent');
+
+

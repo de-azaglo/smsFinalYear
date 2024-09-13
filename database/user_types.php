@@ -11,6 +11,10 @@ return [
     'student' => [
         'user_type' => 'student',
         'location' => '/student/dashboard'
+    ],
+    'guardian' => [
+        'user_type' => 'parent',
+        'location' => '/parent/dashboard'
     ]
 ]
 ?>

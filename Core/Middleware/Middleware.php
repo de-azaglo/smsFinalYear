@@ -8,7 +8,8 @@ class Middleware{
         'auth' => Auth::class,
         'admin' => Admin::class,
         'facilitator' => Facilitator::class,
-        'student' => Student::class
+        'student' => Student::class,
+        'parent' => Guardian::class
     ];
 
     public static function resolve($key){

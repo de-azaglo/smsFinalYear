@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 16, 2024 at 02:59 PM
+-- Generation Time: Sep 13, 2024 at 12:28 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.4
 
@@ -46,6 +46,62 @@ INSERT INTO `academic_year` (`id`, `year`, `start_date`, `end_date`, `number_of_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `assessment`
+--
+
+CREATE TABLE `assessment` (
+  `id` int NOT NULL,
+  `student_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `subject_id` int NOT NULL,
+  `midsem_score` int DEFAULT '0',
+  `exam_score` int DEFAULT '0',
+  `class_score` int DEFAULT '0',
+  `exam_weighted` int DEFAULT '0',
+  `final_score` int DEFAULT '0',
+  `class_id` int NOT NULL,
+  `term_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `assessment`
+--
+
+INSERT INTO `assessment` (`id`, `student_id`, `subject_id`, `midsem_score`, `exam_score`, `class_score`, `exam_weighted`, `final_score`, `class_id`, `term_id`) VALUES
+(1, 'STU003', 2, 90, 100, 36, 60, 96, 1, 3),
+(2, 'STU004', 2, 100, 100, 40, 60, 100, 1, 3),
+(3, 'STU005', 2, 40, 80, 16, 48, 64, 1, 3),
+(4, 'STU003', 3, 70, 90, 28, 54, 82, 1, 3),
+(5, 'STU004', 3, 80, 70, 32, 42, 74, 1, 3),
+(6, 'STU005', 3, 100, 60, 40, 36, 76, 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assignments`
+--
+
+CREATE TABLE `assignments` (
+  `id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text,
+  `due_date` date DEFAULT NULL,
+  `subject_id` int DEFAULT NULL,
+  `teacher_id` varchar(20) DEFAULT NULL,
+  `file_path` varchar(255) DEFAULT NULL,
+  `class_id` int NOT NULL,
+  `date_posted` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `assignments`
+--
+
+INSERT INTO `assignments` (`id`, `title`, `description`, `due_date`, `subject_id`, `teacher_id`, `file_path`, `class_id`, `date_posted`) VALUES
+(1, 'Comprehension 1', 'Sample Assignment', '2024-09-19', 22, 'TEA001', NULL, 1, '2024-09-07');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `attendance`
 --
 
@@ -70,7 +126,9 @@ INSERT INTO `attendance` (`id`, `student_id`, `class_id`, `academic_year`, `term
 (4, 'STU004', '1', '2023/2024', 3, '2024-08-15', 'Absent'),
 (18, 'STU003', '1', '2023/2024', 3, '2024-08-16', 'Present'),
 (19, 'STU004', '1', '2023/2024', 3, '2024-08-16', 'Present'),
-(20, 'STU005', '1', '2023/2024', 3, '2024-08-16', 'Absent');
+(20, 'STU005', '1', '2023/2024', 3, '2024-08-16', 'Absent'),
+(21, 'STU003', '1', '2023/2024', 3, '2024-09-03', 'Present'),
+(22, 'STU004', '1', '2023/2024', 3, '2024-09-03', 'Absent');
 
 -- --------------------------------------------------------
 
@@ -173,11 +231,33 @@ CREATE TABLE `guardians` (
 
 INSERT INTO `guardians` (`id`, `user_number`, `guardian_name`, `guardian_type`, `contact`, `occupation`, `email`, `address`) VALUES
 (2, 'PAR001', 'Seidu Saeed Rahman', 'father', '0549457934', 'father', 'rahman@gmail.com', 'GA-267-7897'),
-(3, 'PAR003', 'Seidu Saeed Rahman', 'father', '0549457934', 'father', 'rahman@gmail.com', 'GA-267-7897'),
-(4, 'PAR004', 'Gillian Frimpong', 'father', 'Margaret', 'father', 'Rashad', 'GA-555-5584'),
 (5, 'PAR005', 'Daniel Kwabena Alorsor', 'mother', '0245656566', 'mother', 'daniel@gmail.com', 'GA-123-5849'),
 (6, 'PAR006', 'Azaglo Micheal', 'father', '0549632604', 'father', 'micheal@gmail.com', 'GA-000-0000'),
 (7, 'PAR007', 'Kwakye Joseph', 'father', '0267358363', 'father', 'joe@gmail.com', 'GA-212-8898');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `learning_materials`
+--
+
+CREATE TABLE `learning_materials` (
+  `id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `subject_id` int NOT NULL,
+  `teacher_id` varchar(20) NOT NULL,
+  `class_id` int NOT NULL,
+  `file_path` varchar(255) NOT NULL,
+  `uploaded_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `learning_materials`
+--
+
+INSERT INTO `learning_materials` (`id`, `title`, `description`, `subject_id`, `teacher_id`, `class_id`, `file_path`, `uploaded_at`) VALUES
+(1, 'Notes On Sets', 'Sample Notes on Sets', 2, 'TEA001', 1, './resource/uploads/assignments/Copy of Calendar Management Questionnaire.pdf', '2024-09-08');
 
 -- --------------------------------------------------------
 
@@ -199,95 +279,50 @@ CREATE TABLE `lesson_periods` (
 
 INSERT INTO `lesson_periods` (`id`, `time_slot`, `day`, `subject`, `grade`) VALUES
 (1, 1, 1, 1, 1),
-(2, 2, 1, 1, 1),
-(3, 3, 1, 1, 1),
-(4, 4, 1, 1, 1),
-(5, 5, 1, 1, 1),
-(6, 6, 1, 1, 1),
-(7, 7, 1, 1, 1),
-(8, 8, 1, 1, 1),
-(9, 9, 1, 1, 1),
-(10, 1, 2, 1, 1),
-(11, 2, 2, 1, 1),
-(12, 3, 2, 1, 1),
-(13, 4, 2, 1, 1),
-(14, 5, 2, 1, 1),
-(15, 6, 2, 1, 1),
-(16, 7, 2, 1, 1),
-(17, 8, 2, 1, 1),
-(18, 9, 2, 1, 1),
-(19, 1, 3, 1, 1),
-(20, 2, 3, 1, 1),
-(21, 3, 3, 1, 1),
-(22, 4, 3, 1, 1),
-(23, 5, 3, 1, 1),
-(24, 6, 3, 1, 1),
-(25, 7, 3, 1, 1),
-(26, 8, 3, 1, 1),
-(27, 9, 3, 1, 1),
-(28, 1, 4, 1, 1),
-(29, 2, 4, 1, 1),
-(30, 3, 4, 1, 1),
-(31, 4, 4, 1, 1),
-(32, 5, 4, 1, 1),
-(33, 6, 4, 1, 1),
-(34, 7, 4, 1, 1),
-(35, 8, 4, 1, 1),
-(36, 9, 4, 1, 1),
-(37, 1, 5, 1, 1),
-(38, 2, 5, 1, 1),
-(39, 3, 5, 1, 1),
-(40, 4, 5, 1, 1),
-(41, 5, 5, 1, 1),
-(42, 6, 5, 1, 1),
-(43, 7, 5, 1, 1),
-(44, 8, 5, 1, 1),
-(45, 9, 5, 1, 1),
-(46, 1, 1, 1, 1),
-(47, 2, 1, 1, 1),
-(48, 3, 1, 1, 1),
-(49, 4, 1, 1, 1),
-(50, 5, 1, 1, 1),
-(51, 6, 1, 1, 1),
-(52, 7, 1, 1, 1),
-(53, 8, 1, 1, 1),
-(54, 9, 1, 1, 1),
-(55, 1, 2, 1, 1),
-(56, 2, 2, 1, 1),
-(57, 3, 2, 1, 1),
-(58, 4, 2, 1, 1),
-(59, 5, 2, 1, 1),
-(60, 6, 2, 1, 1),
-(61, 7, 2, 1, 1),
-(62, 8, 2, 1, 1),
-(63, 9, 2, 1, 1),
-(64, 1, 3, 1, 1),
-(65, 2, 3, 1, 1),
-(66, 3, 3, 1, 1),
-(67, 4, 3, 1, 1),
-(68, 5, 3, 1, 1),
-(69, 6, 3, 1, 1),
-(70, 7, 3, 1, 1),
-(71, 8, 3, 1, 1),
-(72, 9, 3, 1, 1),
-(73, 1, 4, 1, 1),
-(74, 2, 4, 1, 1),
-(75, 3, 4, 1, 1),
-(76, 4, 4, 1, 1),
-(77, 5, 4, 1, 1),
-(78, 6, 4, 1, 1),
-(79, 7, 4, 1, 1),
-(80, 8, 4, 1, 1),
-(81, 9, 4, 1, 1),
-(82, 1, 5, 1, 1),
-(83, 2, 5, 1, 1),
-(84, 3, 5, 1, 1),
-(85, 4, 5, 1, 1),
-(86, 5, 5, 1, 1),
-(87, 6, 5, 1, 1),
-(88, 7, 5, 1, 1),
-(89, 8, 5, 1, 1),
-(90, 9, 5, 1, 1);
+(2, 2, 1, 3, 1),
+(3, 3, 1, 2, 1),
+(4, 4, 1, 20, 1),
+(5, 5, 1, 7, 1),
+(6, 6, 1, 8, 1),
+(7, 7, 1, 21, 1),
+(8, 8, 1, 10, 1),
+(9, 9, 1, 11, 1),
+(10, 1, 2, 5, 1),
+(11, 2, 2, 2, 1),
+(12, 3, 2, 7, 1),
+(13, 4, 2, 20, 1),
+(14, 5, 2, 14, 1),
+(15, 6, 2, 13, 1),
+(16, 7, 2, 21, 1),
+(17, 8, 2, 19, 1),
+(18, 9, 2, 10, 1),
+(19, 1, 3, 2, 1),
+(20, 2, 3, 15, 1),
+(21, 3, 3, 6, 1),
+(22, 4, 3, 20, 1),
+(23, 5, 3, 7, 1),
+(24, 6, 3, 8, 1),
+(25, 7, 3, 21, 1),
+(26, 8, 3, 6, 1),
+(27, 9, 3, 19, 1),
+(28, 1, 4, 5, 1),
+(29, 2, 4, 8, 1),
+(30, 3, 4, 4, 1),
+(31, 4, 4, 20, 1),
+(32, 5, 4, 2, 1),
+(33, 6, 4, 13, 1),
+(34, 7, 4, 21, 1),
+(35, 8, 4, 15, 1),
+(36, 9, 4, 19, 1),
+(37, 1, 5, 18, 1),
+(38, 2, 5, 9, 1),
+(39, 3, 5, 5, 1),
+(40, 4, 5, 20, 1),
+(41, 5, 5, 10, 1),
+(42, 6, 5, 11, 1),
+(43, 7, 5, 21, 1),
+(44, 8, 5, 14, 1),
+(45, 9, 5, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -338,11 +373,30 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `user_number`, `first_name`, `other_name`, `last_name`, `date_of_birth`, `class_id`, `gender`, `address`, `parent_id`, `date_of_admission`, `height`, `blood_group`) VALUES
-(1, 'STU001', 'Rahim', 'Saeed', 'Seidu', '2023-11-15', 3, 'Male', 'GA-267-7897', 'PAR003', '2024-04-25', 54, 'A+'),
-(2, 'STU002', 'Mina', 'Abena', 'Frimpong', '2013-12-06', 4, 'Female', 'GA-555-5584', 'PAR004', '2022-01-10', 80, 'A+'),
 (3, 'STU003', 'Godslove', 'Kwadwo', 'Alorsor', '2022-03-14', 1, 'Male', 'GA-123-5849', 'PAR005', '2024-08-14', 70, 'A+'),
 (4, 'STU004', 'Derrick', 'Kwabena', 'Azaglo', '2024-07-29', 1, 'Male', 'GA-000-0000', 'PAR006', '2024-08-13', 70, 'A+'),
 (5, 'STU005', 'Joy', 'Abena', 'Kwakye', '2019-08-12', 1, 'Female', 'GA-212-8898', 'PAR007', '2024-08-14', 80, 'A+');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_solutions`
+--
+
+CREATE TABLE `student_solutions` (
+  `id` int NOT NULL,
+  `assignment_id` int NOT NULL,
+  `student_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `solution_file_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `submission_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `student_solutions`
+--
+
+INSERT INTO `student_solutions` (`id`, `assignment_id`, `student_id`, `solution_file_path`, `submission_date`) VALUES
+(1, 1, 'STU003', './resource/uploads/assignments/Notes screen.jpg', '2024-09-08');
 
 -- --------------------------------------------------------
 
@@ -353,35 +407,37 @@ INSERT INTO `students` (`id`, `user_number`, `first_name`, `other_name`, `last_n
 CREATE TABLE `subjects` (
   `id` int NOT NULL,
   `subject_title` varchar(255) NOT NULL,
-  `teacher_id` varchar(255) DEFAULT NULL
+  `examinable` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`id`, `subject_title`, `teacher_id`) VALUES
-(1, 'Composition', NULL),
-(2, 'Mathematics', NULL),
-(3, 'Creative Arts', NULL),
-(4, 'Comprehension', NULL),
-(5, 'French', NULL),
-(6, 'I.C.T', NULL),
-(7, 'OWOP', NULL),
-(8, 'Grammar', NULL),
-(9, 'History', NULL),
-(10, 'Science', NULL),
-(11, 'R.M.E', NULL),
-(12, 'Worship', NULL),
-(13, 'Twi', NULL),
-(14, 'Peenmanship', NULL),
-(15, 'C.B.S', NULL),
-(16, 'Spelling & Vocabulary', NULL),
-(17, 'Club Meeting', NULL),
-(18, 'P.E', NULL),
-(19, 'Career Tech', NULL),
-(20, 'Snack', NULL),
-(21, 'Lunch', NULL);
+INSERT INTO `subjects` (`id`, `subject_title`, `examinable`) VALUES
+(1, 'Composition', 'false'),
+(2, 'Mathematics', 'true'),
+(3, 'Creative Arts', 'true'),
+(4, 'Comprehension', 'false'),
+(5, 'French', 'true'),
+(6, 'I.C.T', 'true'),
+(7, 'OWOP', 'true'),
+(8, 'Grammar', 'false'),
+(9, 'History', 'true'),
+(10, 'Science', 'true'),
+(11, 'R.M.E', 'true'),
+(12, 'Worship', 'false'),
+(13, 'Twi', 'true'),
+(14, 'Penmanship', 'false'),
+(15, 'C.B.S', 'false'),
+(16, 'Spelling & Vocabulary', 'false'),
+(17, 'Club Meeting', 'false'),
+(18, 'P.E', 'true'),
+(19, 'Career Tech', 'true'),
+(20, 'Snack', 'false'),
+(21, 'Lunch', 'false'),
+(22, 'English', 'true'),
+(23, 'Social Studies', 'true');
 
 -- --------------------------------------------------------
 
@@ -441,7 +497,7 @@ CREATE TABLE `terms` (
   `term_name` varchar(50) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
-  `status` varchar(200) NOT NULL
+  `status` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -449,8 +505,8 @@ CREATE TABLE `terms` (
 --
 
 INSERT INTO `terms` (`id`, `year`, `term_name`, `start_date`, `end_date`, `status`) VALUES
-(1, '2023/2024', 'Term 1', '2024-03-25', '2024-03-25', ''),
-(2, '2023/2024', 'Term 2', '2024-03-25', '2024-04-16', ''),
+(1, '2023/2024', 'Term 1', '2024-03-25', '2024-03-25', NULL),
+(2, '2023/2024', 'Term 2', '2024-03-25', '2024-04-16', NULL),
 (3, '2023/2024', 'Term 3', '2024-03-26', '2024-04-18', 'active');
 
 -- --------------------------------------------------------
@@ -507,19 +563,17 @@ INSERT INTO `users` (`user_id`, `user_number`, `last_name`, `user_type`, `email`
 (14, 'TEA008', 'Rafiu', 'facilitator', 'raf@gmail.com', 'default'),
 (16, 'TEA009', 'Asante', 'facilitator', 'rich@gmail.com', 'default'),
 (17, 'TEA011', 'Turkson', 'facilitator', 'conrad@gmail.com', 'default'),
-(18, 'PAR003', 'rahman@gmail.com', 'parent', 'default', 'Seidu Saeed Rahman'),
-(19, 'STU001', 'Seidu', 'student', NULL, 'default'),
+(19, 'STU001', 'Seidu', 'student', 'STU001@gmail.com', 'default'),
 (20, 'TEA012', 'Aboagye', 'facilitator', 'francis@gmail.com', 'default'),
 (21, 'TEA013', 'Acquah', 'facilitator', 'scott@gmail.com', 'default'),
 (22, 'TEA014', 'Adjei', 'facilitator', 'moses@gmail.com', 'default'),
-(23, 'PAR004', 'Gillian Frimpong', 'parent', 'Rashad', 'default'),
-(24, 'STU002', 'Frimpong', 'student', NULL, 'default'),
+(24, 'STU002', 'Frimpong', 'student', 'STU002@gmail.com', 'default'),
 (25, 'PAR005', 'Daniel Kwabena Alorsor', 'parent', 'daniel@gmail.com', 'default'),
-(26, 'STU003', 'Alorsor', 'student', NULL, 'default'),
+(26, 'STU003', 'Alorsor', 'student', 'STU003@gmail.com', 'password'),
 (27, 'PAR006', 'Azaglo Micheal', 'parent', 'micheal@gmail.com', 'default'),
-(28, 'STU004', 'Azaglo', 'student', NULL, 'default'),
+(28, 'STU004', 'Azaglo', 'student', 'STU004@gmail.com', 'default'),
 (29, 'PAR007', 'Kwakye Joseph', 'parent', 'joe@gmail.com', 'default'),
-(30, 'STU005', 'Joy', 'student', NULL, 'default');
+(30, 'STU005', 'Joy', 'student', 'STU005@gmail.com', 'default');
 
 --
 -- Indexes for dumped tables
@@ -529,6 +583,18 @@ INSERT INTO `users` (`user_id`, `user_number`, `last_name`, `user_type`, `email`
 -- Indexes for table `academic_year`
 --
 ALTER TABLE `academic_year`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `assessment`
+--
+ALTER TABLE `assessment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `assignments`
+--
+ALTER TABLE `assignments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -562,6 +628,12 @@ ALTER TABLE `guardians`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `learning_materials`
+--
+ALTER TABLE `learning_materials`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `lesson_periods`
 --
 ALTER TABLE `lesson_periods`
@@ -577,6 +649,12 @@ ALTER TABLE `school_days`
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student_solutions`
+--
+ALTER TABLE `student_solutions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -626,10 +704,22 @@ ALTER TABLE `academic_year`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `assessment`
+--
+ALTER TABLE `assessment`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `assignments`
+--
+ALTER TABLE `assignments`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `class_teachers`
@@ -656,10 +746,16 @@ ALTER TABLE `guardians`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `learning_materials`
+--
+ALTER TABLE `learning_materials`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `lesson_periods`
 --
 ALTER TABLE `lesson_periods`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `school_days`
@@ -674,10 +770,16 @@ ALTER TABLE `students`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `student_solutions`
+--
+ALTER TABLE `student_solutions`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `subject_teachers`

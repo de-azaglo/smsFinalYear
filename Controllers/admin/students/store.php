@@ -55,7 +55,7 @@ $blood_group = $_POST['blood_group'];
 $grade = $_POST['grade'];
 
 // Insert into 'students' database
-$db->query("INSERT INTO students ( user_number, first_name, last_name, other_name, gender, date_of_birth, date_of_admission, height, blood_group, class_id, address, parent_id, email) VALUES (:user_number, :first_name, :last_name, :other_name, :gender, :date_of_birth, :date_of_admission, :height, :blood_group, :class_id, :address, :parent_id, :email)", [
+$db->query("INSERT INTO students ( user_number, first_name, last_name, other_name, gender, date_of_birth, date_of_admission, height, blood_group, class_id, address, parent_id) VALUES (:user_number, :first_name, :last_name, :other_name, :gender, :date_of_birth, :date_of_admission, :height, :blood_group, :class_id, :address, :parent_id)", [
     'user_number' => $user_number,
     'first_name' => $first_name,
     'last_name' => $last_name,
