@@ -47,8 +47,8 @@
                     <div class="single-usr">
                         <img src="/../resource/images/team/team-memb1.jpg" alt="">
                         <div class="det-o">
-                            <h4>David Kanuel</h4>
-                            <i>Teacher </i>
+                            <h4>HeadMistress</h4>
+                            <i>East Legon Branch</i>
                         </div>
                     </div>
                 </div>
@@ -56,30 +56,12 @@
                     <div class="single-usr">
                         <img src="/../resource/images/team/team-memb2.jpg" alt="">
                         <div class="det-o">
-                            <h4>David Kanuel</h4>
-                            <i>Teacher</i>
+                            <h4>HeadMistress</h4>
+                            <i>Madina Branch</i>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-usr">
-                        <img src="/../resource/images/team/team-memb3.jpg" alt="">
-                        <div class="det-o">
-                            <h4>David Kanuel</h4>
-                            <i>Teacherr</i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="single-usr">
-                        <img src="/../resource/images/team/team-memb4.jpg" alt="">
-                        <div class="det-o">
-                            <h4>David Kanuel</h4>
-                            <i>Teacher</i>
-                        </div>
-                    </div>
-                </div>
-                
+                         
                  
             </div>
         </div>
