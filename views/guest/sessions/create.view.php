@@ -1,7 +1,10 @@
 <?php
-// if (!empty($errors)){
-//     dd($errors);
-// }
+view('partials/head.php', [
+    'title' => 'Login'
+]);
+
+view('partials/guest-nav.php');
+
 ?>
 <main class="login">
     <section class="login-left">
@@ -58,3 +61,5 @@
     </section>
 
 </main>
+
+<?php view('partials/footer.php'); ?>
