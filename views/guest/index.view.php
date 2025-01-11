@@ -144,7 +144,7 @@
 
                             <p></p>
 
-                            <button class="btn btn-sm btn-success">Enrol Now</button>
+                            <button class="btn btn-sm btn-success">Enroll Now</button>
 
                         </div>
                     </div>
@@ -152,7 +152,7 @@
 
                 <div class="col-md-4 col-sm-6 cord-div">
                     <div class="cours-card">
-                        <img src="/../resource/images/cour/6.jpg" alt="">
+                        <img src="/../resource/images/cour/5.jpg" alt="">
                         <div class="cours-name">
                             <h2>PRIMARY</h2>
                         </div>
@@ -177,7 +177,7 @@
 
                 <div class="col-md-4 col-sm-6 cord-div">
                     <div class="cours-card">
-                        <img src="/../resource/images/cour/7.jpg" alt="">
+                        <img src="/../resource/images/slider/slid_1.jpg" alt="">
                         <div class="cours-name">
                             <h2>JUNIOR HIGH</h2>
                         </div>
